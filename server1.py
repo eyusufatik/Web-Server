@@ -12,11 +12,9 @@ print("HTTP server started. Listenening on {0}:{1}.".format(host,port))
 while True:
     client_connection, client_address = listen_socket.accept()
     message = client_connection.recv(1024)
-    print(message)
+    print(message,"\n")
 
-    http_response = """\
-        HTTP/1.1 200 OK
-
-        Hello, World!"""
-    client_connection.sendall(http_response)
+    http_response = "HTTP/1.1 200 OK\n\nHello, World!"
+    print(http_response)
+    client_connection.sendall(http_response.encode())
     client_connection.close()
